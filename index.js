@@ -27,20 +27,22 @@ app.get('/', (req, res) => {
 
 
 
-app.post("/",async(req,res)=>{
-    const{email,password}=req.body;
+app.post("/login",async(req,res)=>{
+    const{email,password}=req.body
+
     try{
-        const check=await collection.findOne({email:email});
-        if(!password===check.password){
-            res.json("Invalid Id and Password");
+        const check=await collection.findOne({email:email})
+
+        if(check){
+            res.json("exist")
         }
         else{
-            res.json("Login Successful");
+            res.json("notexist")
         }
 
     }
     catch(e){
-        res.json("fail");
+        res.json("fail")
     }
 
 })
@@ -48,23 +50,30 @@ app.post("/",async(req,res)=>{
 
 
 app.post("/signup",async(req,res)=>{
-    const{email,password}=req.body;
+    const{email,password}=req.body
+
+    const data={
+        email:email,
+        password:password
+    }
+
     try{
-        const check=await collection.findOne({email:email});
+        const check=await collection.findOne({email:email})
 
         if(check){
-            res.json("exist");
+            res.json("exist")
         }
         else{
-            await collection.create({email, password})
-            res.json("register successful");            
+            res.json("notexist")
+            await collection.insertMany([data])
         }
+
     }
     catch(e){
-        res.json("fail");
+         res.json("fail")
     }
-})
 
+})
 app.use('/api', detailRoutes);
 
 
