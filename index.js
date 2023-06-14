@@ -24,9 +24,7 @@ app.get('/', (req, res) => {
     res.send('Welcome to my Online! 🙋‍♂️, 🌏 🎊✨🤩');
 });
 
-app.get("/",cors(),(req,res)=>{
 
-})
 
 
 app.post("/",async(req,res)=>{
