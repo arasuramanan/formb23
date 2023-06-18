@@ -19,11 +19,11 @@ const mongoose = require('mongoose');
         required: true,
      },
 
-       InfoSharedwithrespectto: {
+       InformationSharedInCapacity1: {
         type: String, 
        },
 
-       InsiderTypes: {
+       Designation1: {
         type: String,
       },
 
@@ -37,6 +37,14 @@ const mongoose = require('mongoose');
         required: true,
        },
 
+       InformationSharedInCapacity2: {
+        type: String, 
+       },
+
+       Designation2: {
+        type: String,
+      },
+      
        TypeofOrganization: {
          type: String,
          required: true,
@@ -47,7 +55,7 @@ const mongoose = require('mongoose');
         required: true,
        },
 
-       DateandTimeofSharing: {
+       DateofSharing: {
          type: Date, 
          default: Date.now 
        },
@@ -65,7 +73,10 @@ const mongoose = require('mongoose');
       ModeofSharing: {
         type: String,
     },
+    TimeofSharing: {
+      type: String,
+    }
 
-  }, { timestamps: true });
+  });
        //Model creation
  module.exports = mongoose.model('UPSIdata', detailsSchema);
